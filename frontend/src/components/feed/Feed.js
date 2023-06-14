@@ -3,17 +3,24 @@ import './Feed.css'
 import React, { useEffect, useState } from 'react';
 import Post from '../post/Post';
 import { fetchPosts, handleSendingNewPost } from '../../fetchers';
-import ImageUpload from '../imageUpload/imageUpload';
+import axios from "axios";
+
 
 const Feed = ({ navigate }) => {
   const [message, setMessage] = useState('');
   const [posts, setPosts] = useState([]);
   const [token, setToken] = useState(window.localStorage.getItem("token"));
+  const [newUser, setNewAuthor] = useState({photo: ""});
 
   useEffect(() => {
     fetchPosts(token, setToken, setPosts);
   }, [])
     
+  const handlePhoto = (event) => {
+    setNewAuthor({ ...newUser, photo: event.target.files[0] });
+    console.log(newUser.photo);
+  };
+
   const logout = () => {
     window.localStorage.removeItem("token")
     navigate('/login')
@@ -21,6 +28,15 @@ const Feed = ({ navigate }) => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    const formData = new FormData()
+    formData.append('photo', newUser.photo)
+    axios.post('http://localhost:3000/users/add', formData)
+      .then(res => {
+        console.log(res)
+      })
+      .catch(error => {
+        console.log(error)
+      });
     handleSendingNewPost(token, message, "/posts").then(() => {
       fetchPosts(token, setToken, setPosts)
     }
@@ -32,7 +48,7 @@ const Feed = ({ navigate }) => {
       return(
         <div class="feedContainer">
             <h1>Enter the Trelloship</h1>
-            <form class="postForm" onSubmit={handleSubmit}>
+            <form class="postForm" onSubmit={handleSubmit} encType="multiPart/form-data">
               <textarea 
                 id='message'
                 value={message}
@@ -41,7 +57,12 @@ const Feed = ({ navigate }) => {
                 placeholder='Your precious feelings matter.' 
                 required>
               </textarea>
-              <ImageUpload/>
+              <input
+              type="file"
+              accept=".png, .jpg, .jpeg"
+              name="photo"
+              onChange={handlePhoto}
+              />
               <button className='submit-button' id='submit'>Post</button>
             </form>
 
@@ -60,6 +81,6 @@ const Feed = ({ navigate }) => {
     } else {
       navigate('/signin')
     }
-}
+  }
 
 export default Feed;

@@ -12,7 +12,7 @@ const ImageUpload = () => {
   };
 
   const handleSubmit = (event) => {
-    event.preventDefault()
+    // event.preventDefault()
     const formData = new FormData()
     formData.append('photo', newUser.photo)
 
