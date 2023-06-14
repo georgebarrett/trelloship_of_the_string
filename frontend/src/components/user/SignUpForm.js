@@ -57,11 +57,11 @@ const SignUpForm = ({ navigate }) => {
   }
 
   const validatePassword = () => {
-    if (password.length > 0) {
+    if (password.length >= 8) {
       setValidationError(prevState => ({ ...prevState, password: "" }));
       return true;
     } else {
-      setValidationError(prevState => ({ ...prevState, password: "Please enter a valid password" }));
+      setValidationError(prevState => ({ ...prevState, password: "Please enter a password that is at least 8 characters" }));
       return false;
     }
   };
