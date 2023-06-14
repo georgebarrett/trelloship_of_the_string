@@ -30,6 +30,7 @@ const Feed = ({ navigate }) => {
     event.preventDefault();
     const formData = new FormData()
     formData.append('photo', newUser.photo)
+
     axios.post('http://localhost:3000/users/add', formData)
       .then(res => {
         console.log(res)
@@ -37,6 +38,7 @@ const Feed = ({ navigate }) => {
       .catch(error => {
         console.log(error)
       });
+      
     handleSendingNewPost(token, message, "/posts").then(() => {
       fetchPosts(token, setToken, setPosts)
     }
