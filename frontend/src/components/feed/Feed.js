@@ -3,6 +3,7 @@ import './Feed.css'
 import React, { useEffect, useState } from 'react';
 import Post from '../post/Post';
 import { fetchPosts, handleSendingNewPost } from '../../fetchers';
+import ImageUpload from '../imageUpload/imageUpload';
 
 const Feed = ({ navigate }) => {
   const [message, setMessage] = useState('');
@@ -40,6 +41,7 @@ const Feed = ({ navigate }) => {
                 placeholder='Your precious feelings matter.' 
                 required>
               </textarea>
+              <ImageUpload/>
               <button className='submit-button' id='submit'>Post</button>
             </form>
 

@@ -3,6 +3,7 @@ import LikeButton from '../LikeButton/LikeButton';
 import { handleSendingNewLike } from '../../fetchers';
 import './Post.css';
 
+
 const Post = ({post}) => {
   const [likeCount, setLikeCount] = useState(post.likeCount);
   const [token, setToken] = useState(window.localStorage.getItem("token"));
