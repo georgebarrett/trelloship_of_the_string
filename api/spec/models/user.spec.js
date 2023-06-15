@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const bcrypt = require('bcrypt')
 
 require("../mongodb_helper");
 const User = require("../../models/user");
@@ -72,13 +73,17 @@ describe("User model", () => {
       User.find((err, users) => {
         expect(err).toBeNull();
 
-        expect(users[0]).toMatchObject({
+        const dbUser = users[0]
+        expect(dbUser).toMatchObject({
           email: "someone@example.com",
-          password: "password",
           username: "username1", 
           name: "User Name"
         });
-        done();
+
+        bcrypt.compare("password", dbUser.password).then((auth) => {
+          expect(auth).toEqual(true);
+          done();
+        })
       });
     });
   });
