@@ -1,5 +1,7 @@
 const Post = require("../models/post");
 const User = require("../models/user");
+const multer = require('multer');
+// const { uuid } = require('uuidv4');
 const TokenGenerator = require("../models/token_generator");
 
 const PostsController = {
@@ -17,7 +19,8 @@ const PostsController = {
     User.findById(req.user_id).then((user) => {
       const requestObj = {
         username: user.username,
-        message: req.body.message
+        message: req.body.message,
+        photo: req.files.photo[0].path
       }
       const post = new Post(requestObj);
       post.save(async (err) => {
@@ -66,6 +69,29 @@ const PostsController = {
     });
   }); 
   },
+
+  // addImage: (req, res) => {
+  //   const postId = req.params.postId;
+
+  //   (async () => {
+  //     try {
+  //       const post = await Post.findById(postId);
+  //       if (!post) {
+  //         return res.status(404).json({ error: 'Post not found' });
+  //       }
+
+  //       if (req.file) {
+  //         post.photo = req.file.filename;
+  //       }
+
+  //       const updatedPost = await post.save();
+  //       res.status(200).json(updatedPost);
+  //     } catch (error) {
+  //       console.error(error);
+  //       res.status(500).json({ error: 'Internal server error' });
+  //     }
+  //   })();
+  // }
 };
 
 module.exports = PostsController;

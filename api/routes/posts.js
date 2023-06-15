@@ -2,19 +2,12 @@ const express = require("express");
 const router = express.Router();
 const multer = require('multer');
 const mongoose = require('mongoose');
-const uuidv4 = require('uuid/v4');
-
-const PostsController = require("../controllers/posts");
-
-router.get("/", PostsController.Index);
-router.post("/", PostsController.Create);
-router.post("/add-comment", PostsController.addCommentToPost);
-router.post("/add-like", PostsController.AddLike);
-// router.post("/add-image", PostsController.AddImage);
+const { uuid } = require('uuidv4');
+const DIR = './public';
 
 
 // addComment controller invoked in here
-const DIR = '../public/';
+const PostsController = require("../controllers/posts");
 
 const storage = multer.diskStorage({
     destination: (req, file, callback) => {
@@ -22,10 +15,11 @@ const storage = multer.diskStorage({
     },
     filename: (req, file, callback) => {
         const fileName = file.originalname.toLowerCase().split(' ').join('-');
-        callback(null, uuidv4() + '-' + fileName)
+        callback(null, uuid() + '-' + fileName)
     }
 });
-var upload = multer({
+
+const upload = multer({
     storage: storage,
     fileFilter: (req, file, callback) => {
         if (file.mimetype == "image/png" || file.mimetype == "image/jpg" || file.mimetype == "image/jpeg") {
@@ -37,5 +31,9 @@ var upload = multer({
     }
 });
 
+router.get("/", PostsController.Index);
+router.post("/", upload.fields([{ name: 'message', maxCount: 1 }, { name: 'photo', maxCount: 8 }]), PostsController.Create);
+router.post("/add-comment", PostsController.addCommentToPost);
+router.post("/add-like", PostsController.AddLike);
 
 module.exports = router;

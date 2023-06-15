@@ -3,22 +3,19 @@ import './Feed.css'
 import React, { useEffect, useState } from 'react';
 import Post from '../post/Post';
 import { fetchPosts, handleSendingNewPost } from '../../fetchers';
-import axios from "axios";
-
 
 const Feed = ({ navigate }) => {
   const [message, setMessage] = useState('');
   const [posts, setPosts] = useState([]);
   const [token, setToken] = useState(window.localStorage.getItem("token"));
-  const [newUser, setNewAuthor] = useState({photo: ""});
+  const [newImage, setNewImage] = useState({});
 
   useEffect(() => {
     fetchPosts(token, setToken, setPosts);
   }, [])
     
   const handlePhoto = (event) => {
-    setNewAuthor({ ...newUser, photo: event.target.files[0] });
-    console.log(newUser.photo);
+    setNewImage({ photo: event.target.files[0] });
   };
 
   const logout = () => {
@@ -26,23 +23,31 @@ const Feed = ({ navigate }) => {
     navigate('/login')
   }
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
     const formData = new FormData()
-    formData.append('photo', newUser.photo)
-
-    axios.post('http://localhost:3000/users/add', formData)
+    console.log(newImage.photo)
+    formData.append('photo', newImage.photo)
+    formData.append('message', message)
+    console.log(formData)
+    fetch('http://localhost:3000/posts', {
+      method: 'post',
+        headers: {
+          'Authorization': `Bearer ${token}`
+        },
+        body: formData
+        
+    })
       .then(res => {
-        console.log(res)
+        handleSendingNewPost(token, message, "/posts").then(() => {
+          fetchPosts(token, setToken, setPosts)
+        })
       })
       .catch(error => {
         console.log(error)
       });
       
-    handleSendingNewPost(token, message, "/posts").then(() => {
-      fetchPosts(token, setToken, setPosts)
-    }
-    )
+    
     setMessage('');
   }
 
