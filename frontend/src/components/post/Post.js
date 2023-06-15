@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { fetchComments, handleSendingNewComment, handleSendingNewLike } from '../../fetchers';
 import Comment from '../comment/Comment';
-import LikeButton from '../LikeButton/LikeButton';
+import LikeButton from '../likeButton/LikeButton';
 import './Post.css';
 
 const Post = ({post}) => {
