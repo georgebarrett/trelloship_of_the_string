@@ -9,11 +9,9 @@ const SessionsController = {
 
     User.findOne({ email: email }).then(async (user) => {
       if (!user) {
-        console.log("auth error: user not found")
-        res.status(401).json({ message: "auth error" });
+        res.status(401).json({ message: "A user with this email address does not exist" });
       } else if (user.password !== password) {
-        console.log("auth error: passwords do not match")
-        res.status(401).json({ message: "auth error" });
+        res.status(401).json({ message: "Email address and password do not match" });
       } else {
         const token = await TokenGenerator.jsonwebtoken(user.id)
         res.status(201).json({ token: token, message: "OK" });
