@@ -34,14 +34,26 @@ const Post = ({post}) => {
 
   return(
     <>
-      <h2>{ post.username }</h2>
+      <h2 className='user-name'>{ post.username }</h2>
       <article className='post' data-cy="post" key={post._id}>
-        {post.message} - Likes: {likeCount}
-        <LikeButton onLike={handleLike} />
+        <div className='post-container'>
+          {post.message}
+          <div className='like-button-container'>
+            <LikeButton className='like-button' onLike={handleLike} /> {likeCount}
+          </div>
+        </div>
       </article>
+
+      <div className='comment-display' id='comment-feed' role="feed">
+       <h3 className='comments-title'>Comments</h3>
+       {comments.map(
+          (comment, index) => ( <Comment comment={ comment } key={ comment._id + index}/>)
+       )}
+      </div>
     
-      <form onSubmit={handleCommentSubmit}>
+      <form className='comment-container' onSubmit={handleCommentSubmit}>
         <textarea
+          className='comment-box'
           data-cy="comment-input-field"
           value={commentMessage}
           onChange={(event) => setCommentMessage(event.target.value)}
@@ -49,14 +61,10 @@ const Post = ({post}) => {
           placeholder='What do you think?'
           required>  
         </textarea>
-        <button data-cy="submit-comment">Submit</button>
+        <button className='comment-button' data-cy="submit-comment">Submit</button>
       </form>
 
-      <div id='comment-feed' role="feed">
-       {comments.map(
-          (comment, index) => ( <Comment comment={ comment } key={ comment._id + index}/>)
-       )}
-      </div>
+      
     </>
   )
 }
