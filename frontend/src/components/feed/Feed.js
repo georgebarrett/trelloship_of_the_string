@@ -3,6 +3,7 @@ import './Feed.css'
 import React, { useEffect, useState } from 'react';
 import Post from '../post/Post';
 import { fetchPosts, handleSendingNewPost } from '../../fetchers';
+import Navbar from '../navbar/Navbar';
 
 const Feed = ({ navigate }) => {
   const [message, setMessage] = useState('');
@@ -29,10 +30,13 @@ const Feed = ({ navigate }) => {
 
     if(token) {
       return(
-        <div class="feedContainer">
-            <h1>Enter the Trelloship</h1>
-            <form class="postForm" onSubmit={handleSubmit}>
-              <textarea 
+        <>
+          <Navbar />
+        <div className="feed-container">
+            <h1 className='feed-title'>Enter the Trelloship</h1>
+            <form className="post-form" onSubmit={handleSubmit}>
+              <textarea
+                className='feelings' 
                 id='message'
                 value={message}
                 onChange={(event) => setMessage(event.target.value)} 
@@ -43,7 +47,7 @@ const Feed = ({ navigate }) => {
               <button className='submit-button' id='submit'>Post</button>
             </form>
 
-            <div id='feed' role="feed">
+            <div className='feed' id='feed' role="feed">
               {posts.map(
                 // index is counting the times i map
                 (post, index) => ( <Post post={ post } key={ post._id + index } /> )
@@ -54,7 +58,8 @@ const Feed = ({ navigate }) => {
               Logout
             </button>
         </div>
-      )
+      </>
+    )
     } else {
       navigate('/signin')
     }
