@@ -4,7 +4,7 @@ import './LoginForm.css';
 const LogInForm = ({ navigate }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [validationError, setValidationError] = useState({ email: '', password: ''})
+  const [validationError, setValidationError] = useState({ error: '' })
 
 
   const handleSubmit = async (event) => {
@@ -20,8 +20,7 @@ const LogInForm = ({ navigate }) => {
       });
 
       if (response.status !== 201) {
-        setValidationError({ password: 'Username and password do not match' });
-        console.log(validationError)
+        setValidationError({ password: 'Email address and password do not match' });
       } else {
         let data = await response.json();
         window.localStorage.setItem('token', data.token);
@@ -36,10 +35,10 @@ const LogInForm = ({ navigate }) => {
     const validEmail = regex.test(email);
 
     if (validEmail) {
-      setValidationError({ email: '', password: '' });
+      setValidationError({ email: '' });
       return true
     } else {
-      setValidationError(previousState => ({ ...previousState, email: 'Please enter a valid email address.' }));
+      setValidationError({ error: 'Please enter a valid email address.' });
       return false
     }
   };
@@ -67,7 +66,7 @@ const LogInForm = ({ navigate }) => {
         <h1 className="loginHeading">Return to Rivendell...</h1>
         <form className="loginForm" onSubmit={handleSubmit}> 
           <input className="loginInput" placeholder='Email' id="email" type='text' value={ email } onChange={handleEmailChange} />
-          <p className='validation-error'>{validationError?.email}</p>
+          <p className='validation-error'>{validationError?.error}</p>
           <input className="loginInput" placeholder='Password' id="password" type='password' value={ password } onChange={handlePasswordChange} />
           <p className='validation-error'>{validationError?.password}</p>
           <input className="loginButton" role='submit-button' id='submit' type="submit" value="Submit" />
