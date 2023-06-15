@@ -11,7 +11,7 @@ const SessionsController = {
     User.findOne({ email: email }).then(async (user) => {      
       if (!user) {
         console.log("auth error: user not found")
-        res.status(401).json({ message: "auth error" });
+        return res.status(401).json({ message: "auth error" });
       } 
       
       const auth = await bcrypt.compare(password, user.password);
