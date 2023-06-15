@@ -34,7 +34,7 @@
   color: black;
 }
 
-.inputButton {
+.signupInputButton {
   margin-top: 40px;
   background: none;
   border: 2px solid white;
@@ -48,7 +48,7 @@
   backdrop-filter: blur(10px);
 }
 
-.inputButton:hover {
+.signupInputButton:hover {
   color: red;
   border: 2px solid red;
   transform: scale(1.1);  

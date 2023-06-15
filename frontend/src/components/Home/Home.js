@@ -40,10 +40,10 @@ const Home = ({ navigate }) => {
         </div>
 
         <div className='buttons'>
-          <button className='inputButton' onClick={logInNav}>
+          <button className='homeInputButton' onClick={logInNav}>
             Log-In
           </button>
-          <button className='inputButton' onClick={signUpNav}>
+          <button className='homeInputButton' onClick={signUpNav}>
             Sign-Up
           </button>
           <button className='inputButton' onClick={handleButtonClick}>

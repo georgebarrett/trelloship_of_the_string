@@ -1,27 +1,43 @@
 @import url('https://fonts.googleapis.com/css2?family=Bilbo+Swash+Caps&display=swap');
 
 
-.feedContainer{
+.feed-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
   background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url("../../../public/TOTS_Feed_Page.jpg");
   background-position: center; 
   background-repeat: no-repeat; 
   background-size: cover; 
-  height: 100vh;
+  height: fit-content;
   padding-left: 50px;
   padding-top: 50px;
 }
 
-h1 {
+.feed-title {
   color: white;
   text-align: center;
   padding-bottom: 5px;
   font-family: 'Bilbo Swash Caps', cursive;
-  font-size: 350%;
+  font-size: 100px;
 }
 
 .submit-button{ 
     opacity: 1.0;
     margin: 15px;
+    display: flex;
+    justify-content: right;
+    margin-top: 40px;
+    background: none;
+    border: 2px solid white;
+    border-radius: 100px;
+    padding: 20px;
+    cursor: url(../../../public/sword-cursor.png), auto;  font-size: 20px;
+    color: whitesmoke;
+    transition: 0.5s ease-in-out;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
 }
 
 .submit-button:hover{
@@ -30,10 +46,26 @@ h1 {
 
 #message{
   border-radius: 10px;
-  padding-left: 10px;
+  padding-left: 20px;
+  font-size: 20px;
 }
 
+.post-form {
+  margin-top: 20px;
+  display: block;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  max-width: 700px;
+}
 
-/* .postForm {
-  padding-left: 10px;
-} */
+textarea:focus {
+  outline: none;
+}
+
+.feelings {
+  padding: 30px;
+  width: 600px;
+  border: none;
+  max-width: 900px;
+}

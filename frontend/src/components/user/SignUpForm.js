@@ -53,7 +53,7 @@ const SignUpForm = ({ navigate }) => {
             <input className= "formInput" placeholder="Username" id="username" type="text" value={ username } onChange={ handleUsernameChange } />
             <input className= "formInput" placeholder="Email" id="email" type='text' value={ email } onChange={handleEmailChange} />
             <input className= "formInput" placeholder="Password" id="password" type='password' value={ password } onChange={handlePasswordChange} />
-          <input  className= "inputButton" id='submit' type="submit" value="Submit" />
+          <input  className= "signupInputButton" id='submit' type="submit" value="Submit" />
         </form>
       </div>
     );
