@@ -15,6 +15,12 @@
   border: 3px solid white;
 }
 
+img { 
+  width: 100px;
+  border-radius: 60%;
+  border: 5px solid #555;
+}
+
 .post-container {
   display: flex;
   padding: 20px;
@@ -97,5 +103,4 @@
 .comments-title {
   padding-bottom: 10px;
   border-bottom: 2px solid white;
-
 }

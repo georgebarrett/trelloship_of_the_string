@@ -12,12 +12,16 @@ const SignUpForm = ({ navigate }) => {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
+    const races = ["dwarf", "hobbit", "wizard", "sauron", "orc", "elf", "man", "wraith"]
+    const index = Math.floor(Math.random() * races.length);
+    const chosenRace = races[index]
+
     fetch( '/users', {
       method: 'post',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ email: email, password: password, username: username, name: name })
+      body: JSON.stringify({ email: email, password: password, username: username, name: name, race: chosenRace })
     })
       .then(response => {
         if(response.status === 201) {
@@ -43,8 +47,7 @@ const SignUpForm = ({ navigate }) => {
   const handleNameChange = (event) => {
     setName(event.target.value)
   }
-
-
+  
     return (
       <div className="signUpContainer">
         <h1 className="signUpHeading"> Start your journey to Mordor.... </h1>
