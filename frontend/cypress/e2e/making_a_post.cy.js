@@ -10,6 +10,5 @@ describe("Posting a message", () => {
         cy.contains("Test post");
         cy.contains("username1");
       })
-      // cy.visit("/posts")
     })
 })
