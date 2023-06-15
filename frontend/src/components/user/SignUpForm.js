@@ -32,6 +32,16 @@ const SignUpForm = ({ navigate }) => {
     };
   }
 
+  // const validateName = () => {
+  //   if (name.length > 3) {
+  //     setValidationError(prevState => ({ ...prevState, name: "" }));
+  //     return true;
+  //   } else {
+  //     setValidationError(prevState => ({ ...prevState, password: "Please enter a name" }));
+  //     return false;
+  //   }
+  // };
+
   const validateEmail = () => {
     const regex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
@@ -88,6 +98,7 @@ const SignUpForm = ({ navigate }) => {
         <h1 className="signUpHeading"> Start your journey to Mordor.... </h1>
         <form className="signUpForm" onSubmit={handleSubmit}>
             <input className="formInput" placeholder='Name' id="name" type='text' value={ name } onChange={handleNameChange} />
+            {/* <p className='validation-error'>{validationError?.name}</p> */}
             <input className= "formInput" placeholder="Username" id="username" type="text" value={ username } onChange={ handleUsernameChange } />
             <p className='validation-error'>{validationError?.username}</p>
             <input className= "formInput" placeholder="Email" id="email" type='text' value={ email } onChange={handleEmailChange} />
