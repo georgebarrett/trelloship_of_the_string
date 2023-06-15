@@ -16,6 +16,7 @@ describe("Post", () => {
 
     const post = { _id: 1,
       message: "post one",
+      likedByUsers: [],
       comments: commentData,
     }
     // not sure what is going on here
@@ -43,6 +44,7 @@ describe("Post", () => {
 
     const post = { _id: 1,
       message: "post one",
+      likedByUsers: []
     }
 
     cy.mount(<Post post={post}/>)
@@ -54,9 +56,15 @@ describe("Post", () => {
     cy.wait('@postAddComment').then( interception => {
       expect(interception.response.body.message).to.eq("OK")
     })
+  })
 
   it('renders a post with initial likes equal to 0', () => {
-    cy.mount(<Post post={{_id: 1, message: "Hello, world", likedByUsers: []}} />);
+    const post = {
+      _id: 1,
+      message: "Hello, world",
+      likedByUsers: []
+    }
+    cy.mount(<Post post={post} />);
     cy.get('[data-cy="post"]').should('contain.text', "Likes: 0")
   })
 })
