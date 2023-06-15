@@ -53,7 +53,7 @@ const PostsController = {
 
   },
 
-  UpdateLike: (req, res) => {
+  UpdateLikePost: (req, res) => {
     Post.findById(req.body.postId)
     .then((post) => {
       const userID = req.user_id
@@ -76,6 +76,32 @@ const PostsController = {
     });
   }); 
   },
+
+
+  UpdateLikeComment: (req, res) => {
+  //   Post.comments.findById(req.body.commentId)
+  //   .then((post) => {
+  //     const userID = req.user_id
+  //     if (post.likedByUsers.includes(userID)) {
+  //       post.likedByUsers.remove(userID)
+  //     } else {
+  //       post.likedByUsers.push(userID)
+  //     }
+  //   post.save(async (err) => {
+  //     if (err) {
+  //       throw err;
+  //     }
+
+  //     const token = await TokenGenerator.jsonwebtoken(req.user_id)
+  //     res.status(201).json({ 
+  //       message: 'OK',
+  //       likeCount: post.likedByUsers.length,
+  //       token: token 
+  //     });
+  //   });
+  // }); 
+  },
+
 };
 
 module.exports = PostsController;
