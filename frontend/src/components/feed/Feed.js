@@ -41,7 +41,7 @@ const Feed = ({ navigate }) => {
                 value={message}
                 onChange={(event) => setMessage(event.target.value)} 
                 type='text' 
-                placeholder='Your precious feelings matter.' 
+                placeholder='Your feelings matter, my precious...' 
                 required>
               </textarea>
               <button className='submit-button' id='submit'>Post</button>
