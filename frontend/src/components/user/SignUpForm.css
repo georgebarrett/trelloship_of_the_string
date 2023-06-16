@@ -1,10 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;900&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;900&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Bilbo+Swash+Caps&display=swap');
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
 }
 
 .signUpForm {
@@ -12,7 +12,7 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  margin-top: 100px;
+  margin-top: 50px;
 }
 
 .signUpContainer {
@@ -25,8 +25,8 @@
 }
 
 .formInput {
-  margin: 7px;
-  padding: 7px;
+  margin: 12px;
+  padding: 10px;
   padding-left: 20px;
   width: 250px;
   border: 2px solid whitesmoke;
@@ -34,7 +34,11 @@
   color: black;
 }
 
-.inputButton {
+.formInput:focus {
+  outline: none;
+}
+
+.signupInputButton {
   margin-top: 40px;
   background: none;
   border: 2px solid white;
@@ -48,11 +52,15 @@
   backdrop-filter: blur(10px);
 }
 
-.inputButton:hover {
+.signupInputButton:hover {
   color: red;
   border: 2px solid red;
   transform: scale(1.1);  
   
+}
+
+.validation-error {
+  color: red;
 }
 
 .signUpHeading {
@@ -67,8 +75,6 @@
   border-radius: 10px;
   background: rgba(0, 0, 0, 0.2);
   backdrop-filter: blur(5px);
+  font-family: 'Bilbo Swash Caps', cursive;
+  font-size: 50px;
 } 
-
-.validation-error {
-  color: red;
-}

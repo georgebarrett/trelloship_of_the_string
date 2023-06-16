@@ -14,15 +14,21 @@ const SignUpForm = ({ navigate }) => {
     event.preventDefault();
 
     if (validateName() && validateUsername() && validateEmail() && validatePassword()) {
-      fetch('/users', {
-        method: 'post',
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email: email, password: password, username: username, name: name }),
-      }).then(response => {
-        if (response.status === 201) {
-          navigate('/login');
+  
+    const races = ["dwarf", "hobbit", "wizard", "sauron", "orc", "elf", "man", "wraith"]
+    const index = Math.floor(Math.random() * races.length);
+    const chosenRace = races[index]
+
+    fetch( '/users', {
+      method: 'post',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ email: email, password: password, username: username, name: name, race: chosenRace })
+    })
+      .then(response => {
+        if(response.status === 201) {
+          navigate('/login')
         } else {
           response.json().then(data => {
             setValidationError({ password: data.message })
@@ -91,8 +97,7 @@ const SignUpForm = ({ navigate }) => {
   const handleNameChange = (event) => {
     setName(event.target.value)
   }
-
-
+  
     return (
       <div className="signUpContainer">
         <h1 className="signUpHeading"> Start your journey to Mordor.... </h1>
@@ -105,7 +110,7 @@ const SignUpForm = ({ navigate }) => {
             <p className='validation-error'>{validationError?.email}</p>
             <input className= "formInput" placeholder="Password" id="password" type='password' value={ password } onChange={handlePasswordChange} />
             <p className='validation-error'>{validationError?.password}</p>
-          <input  className= "inputButton" id='submit' type="submit" value="Submit" />
+          <input  className= "signupInputButton" id='submit' type="submit" value="Submit" />
         </form>
       </div>
     );

@@ -3,11 +3,12 @@ describe("Posting a message", () => {
       cy.visit("/login");
       cy.get("#email").type("someone@example.com");
       cy.get("#password").type("password");
-      cy.get("#submit").click();
-      cy.visit("/posts")
-      cy.get("#message").type("Test post")
-      cy.get("#submit").click();
-      cy.contains("Test post");
-      cy.contains("username1");
+      cy.get("#submit").click()
+      .then(() => {
+        cy.get("#message").type("Test post")
+        cy.get("#submit").click();
+        cy.contains("Test post");
+        cy.contains("username1");
+      })
     })
 })

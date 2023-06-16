@@ -1,11 +1,123 @@
+* {
+  cursor: url(../../../public/sword-cursor.png), auto;  font-size: 20px;
+}
+  
+
 .post {
-  background-color: rgb(200, 200, 29);
+  color: white;
   border-width: 2px;
   border-style: dashed;
   padding-left: 50px;
+  padding-right: 50px;
   padding-bottom: 10px;
-  display: inline-block;
-  margin-bottom: 10px;
+  display: flex;
+  flex-direction: row;
+  margin-top: 20px;
+  margin-bottom: 20px;
   padding: 5px;
   border: 1px solid rgb(244, 241, 241);
+  width: 500px;
+  border-radius: 10px;
+  border: 3px solid white;
+  word-wrap: break-word;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
+}
+
+img { 
+  width: 100px;
+  border-radius: 60%;
+  border: 5px solid #555;
+}
+
+.post-container {
+  display: flex;
+  padding: 20px;
+  flex-direction: column;
+  max-width: 500px;
+}
+
+.user-name {
+  color: white;
+  font-size: 20px;
+  width: fit-content;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  margin-left: 20px;
+}
+
+.like-button {
+  margin-left: 40px;
+}
+
+.like-button-container {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: row;
+}
+
+.comment-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background: transparent, url("../../../public/TOTS_Feed_Page.jpg");
+  height: fit-content;
+  padding-left: 10px;
+  padding-top: 10px;
+  color: black;
+  width: 300px;
+  height: 80px;
+  border-radius: 10px;
+  max-width: 600px;
+}
+
+.comment-container {
+  margin-top: 40px;
+  margin-bottom: 40px;
+  display: flex;
+  align-items: center;
+}
+
+.comment-button {
+    opacity: 1.0;
+    margin: 15px;
+    display: flex;
+    justify-content: right;
+    background: none;
+    border: 2px solid white;
+    border-radius: 100px;
+    padding: 20px;
+    cursor: url(../../../public/sword-cursor.png), auto;  font-size: 20px;
+    color: whitesmoke;
+    transition: 0.5s ease-in-out;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+    font-size: 15px;
+}
+
+.comment-button:hover{
+  opacity: 0.5;
+  transform: scale(1.1);
+}
+
+.comment-display {
+  border: 2px solid white;
+  width: fit-content;
+  padding: 10px;
+  border-radius: 5px;
+  color: white;
+  word-wrap: break-word;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
+  width: 300px;
+}
+
+.comments-title {
+  padding-bottom: 10px;
+  border-bottom: 2px solid white;
+}
+
+.username-image {
+  display: flex;
 }
