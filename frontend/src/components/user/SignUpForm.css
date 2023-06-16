@@ -59,6 +59,10 @@
   
 }
 
+.validation-error {
+  color: red;
+}
+
 .signUpHeading {
   color: whitesmoke;
   display: flex;
