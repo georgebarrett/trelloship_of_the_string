@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
+import { fetchUser } from '../../fetchers';
 import './LoginForm.css'; 
 
-const LogInForm = ({ navigate }) => {
+const LogInForm = ({ navigate, token, setToken }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -18,6 +19,7 @@ const LogInForm = ({ navigate }) => {
       body: JSON.stringify({ email: email, password: password })
     })
 
+    // check status code for success
     if(response.status !== 201) {
       console.log("yay")
       navigate('/login')
@@ -25,6 +27,7 @@ const LogInForm = ({ navigate }) => {
       console.log("oop")
       let data = await response.json()
       window.localStorage.setItem("token", data.token)
+      setToken(data.token)
       navigate('/posts');
     }
   }

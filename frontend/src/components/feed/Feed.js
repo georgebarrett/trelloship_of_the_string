@@ -2,16 +2,16 @@ import './Feed.css'
 
 import React, { useEffect, useState } from 'react';
 import Post from '../post/Post';
-import { fetchPosts, handleSendingNewPost } from '../../fetchers';
+import { fetchPosts, fetchUser, handleSendingNewPost } from '../../fetchers';
 import Navbar from '../navbar/Navbar';
 
-const Feed = ({ navigate }) => {
+const Feed = ({ navigate, token, setToken, user, setUser }) => {
   const [message, setMessage] = useState('');
   const [posts, setPosts] = useState([]);
-  const [token, setToken] = useState(window.localStorage.getItem("token"));
 
   useEffect(() => {
     fetchPosts(token, setToken, setPosts);
+    fetchUser(token, setToken, setUser)
   }, [])
     
   const logout = () => {
@@ -56,11 +56,16 @@ const Feed = ({ navigate }) => {
             <button onClick={logout}>
               Logout
             </button>
+            
+            <p>{user.users[0].name}</p>
+            <p>{user.users[0].username}</p>
+            <p>{user.users[0].email}</p>
+            <p>{user.users[0].password}</p>
         </div>
       </>
     )
     } else {
-      navigate('/signin')
+      navigate('/login')
     }
 }
 

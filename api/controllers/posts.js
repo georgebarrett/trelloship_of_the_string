@@ -9,6 +9,7 @@ const PostsController = {
         throw err;
       }
       const token = await TokenGenerator.jsonwebtoken(req.user_id)
+      console.log(req.user_id)
       res.status(200).json({ posts: posts, token: token });
     });
   },

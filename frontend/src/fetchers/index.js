@@ -57,6 +57,22 @@ export const fetchPosts = (token, setToken, setPosts) => {
     }
 }
 
+export const fetchUser = (token, setToken, setUser) => {
+  if(token) {
+    return fetch("/users", {
+      headers: {
+        'Authorization': `Bearer ${token}`
+      }
+    })
+      .then(response => response.json())
+      .then(data => {
+        window.localStorage.setItem("token", data.token)
+        setToken(window.localStorage.getItem("token"))
+        setUser(data);
+      })
+  }
+}
+
 // returns the comments array of a single post using a postID
 export const fetchComments = (token, setToken, setComments, postId) => {
   if(token) {
