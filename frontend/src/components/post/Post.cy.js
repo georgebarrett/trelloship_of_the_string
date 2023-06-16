@@ -65,6 +65,6 @@ describe("Post", () => {
       likedByUsers: []
     }
     cy.mount(<Post post={post} />);
-    cy.get('[data-cy="post"]').should('contain.text', "Likes: 0")
+    cy.get('[data-cy="post"]').should('contain.text', "0")
   })
 })

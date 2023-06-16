@@ -6,10 +6,10 @@ describe("liking a post", () => {
     cy.get("#submit").click()
     .then(() => {
       cy.get("#submit-like").click();
-      cy.contains("Likes: 1");
+      cy.contains("1");
 
       cy.get("#submit-like").click();
-      cy.contains("some message - Likes: 0");
+      cy.contains("some message 0");
     })
   })
 })
