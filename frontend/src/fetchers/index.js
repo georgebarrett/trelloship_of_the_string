@@ -35,7 +35,6 @@ export const handleSendingNewComment = async (token, post, commentMessage, url) 
         )
       });
       const data = await response.json();
-      console.log(data)
     } catch(e) {
       console.log(e)
     }

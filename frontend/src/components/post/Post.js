@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { fetchComments, handleSendingNewComment, handleSendingNewLike } from '../../fetchers';
 import Comment from '../comment/Comment';
-import LikeButton from '../LikeButton/LikeButton';
+import LikeButton from '../likeButton/LikeButton';
 import './Post.css';
 
 const Post = ({post}) => {
@@ -20,6 +20,15 @@ const Post = ({post}) => {
     const response = await handleSendingNewLike(token, post, '/posts/add-like');
     const responseData = await response.json();
     setLikeCount(responseData.likeCount);
+  }
+
+  const handleCommentSubmit = async (event) => {
+    event.preventDefault();
+    await handleSendingNewComment(token, post, commentMessage, '/posts/add-comment');
+    // re-renders the comment feed with the new comment
+    await fetchComments(token, setToken, setComments, post._id)
+    // sets the input field back to empty string
+    setCommentMessage("");
   }
   
   const getImageLink = () => {
@@ -44,26 +53,10 @@ const Post = ({post}) => {
     }
   }
 
-  return (
-    <>
-      <h2>{ post.username }</h2>
-      <img alt='icons' src={getImageLink()} />
-      <article class='post' data-cy="post" key={post._id}>
-        {post.message} - Likes: {likeCount}
-        <LikeButton onLike={handleLike} />
-  // submits a comment on clicking submit button
-  const handleCommentSubmit = async (event) => {
-    event.preventDefault();
-    await handleSendingNewComment(token, post, commentMessage, '/posts/add-comment');
-    // re-renders the comment feed with the new comment
-    await fetchComments(token, setToken, setComments, post._id)
-    // sets the input field back to empty string
-    setCommentMessage("");
-  }
-
   return(
     <>
       <h2 className='user-name'>{ post.username }</h2>
+      <img alt='icons' src={getImageLink()} />
       <article className='post' data-cy="post" key={post._id}>
         <div className='post-container'>
           {post.message}
