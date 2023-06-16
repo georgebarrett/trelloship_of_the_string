@@ -31,7 +31,7 @@ const Feed = ({ navigate }) => {
     if(token) {
       return(
         <>
-          <Navbar />
+          <Navbar navigate={ navigate }/>
         <div className="feed-container">
             <h1 className='feed-title'>Enter the Trelloship</h1>
             <form className="post-form" onSubmit={handleSubmit}>
@@ -53,10 +53,6 @@ const Feed = ({ navigate }) => {
                 (post, index) => ( <Post post={ post } key={ post._id + index } /> )
               ).reverse()}
             </div>
-            
-            <button onClick={logout}>
-              Logout
-            </button>
         </div>
       </>
     )
