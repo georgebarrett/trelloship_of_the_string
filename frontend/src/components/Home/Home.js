@@ -46,7 +46,7 @@ const Home = ({ navigate }) => {
           <button className='homeInputButton' onClick={signUpNav}>
             Sign-Up
           </button>
-          <button className='inputButton' onClick={handleButtonClick}>
+          <button className='homeInputButton' onClick={handleButtonClick}>
             Ambience button
           </button>
         </div>

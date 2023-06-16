@@ -1,8 +1,14 @@
+* {
+  cursor: url(../../../public/sword-cursor.png), auto;  font-size: 20px;
+}
+  
+
 .post {
   color: white;
   border-width: 2px;
   border-style: dashed;
   padding-left: 50px;
+  padding-right: 50px;
   padding-bottom: 10px;
   display: flex;
   flex-direction: row;
@@ -10,9 +16,12 @@
   margin-bottom: 20px;
   padding: 5px;
   border: 1px solid rgb(244, 241, 241);
-  width: fit-content;
+  width: 500px;
   border-radius: 10px;
   border: 3px solid white;
+  word-wrap: break-word;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
 }
 
 img { 
@@ -31,10 +40,10 @@ img {
 .user-name {
   color: white;
   font-size: 20px;
-  border-bottom: 1px solid white;
   width: fit-content;
   margin-top: 30px;
   margin-bottom: 30px;
+  margin-left: 20px;
 }
 
 .like-button {
@@ -98,9 +107,17 @@ img {
   padding: 10px;
   border-radius: 5px;
   color: white;
+  word-wrap: break-word;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
+  width: 300px;
 }
 
 .comments-title {
   padding-bottom: 10px;
   border-bottom: 2px solid white;
+}
+
+.username-image {
+  display: flex;
 }

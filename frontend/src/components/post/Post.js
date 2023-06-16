@@ -54,9 +54,11 @@ const Post = ({post}) => {
   }
 
   return(
-    <>
-      <h2 className='user-name'>{ post.username }</h2>
-      <img alt='icons' src={getImageLink()} />
+    <div className='page'>
+      <div className='username-image'>
+        <img alt='icons' src={getImageLink()} />
+        <h2 className='user-name'>{ post.username }</h2>
+      </div>
       <article className='post' data-cy="post" key={post._id}>
         <div className='post-container'>
           {post.message}
@@ -80,14 +82,14 @@ const Post = ({post}) => {
           value={commentMessage}
           onChange={(event) => setCommentMessage(event.target.value)}
           type="text"
-          placeholder='What do you think?'
+          placeholder='One comment to rule them all?'
           required>  
         </textarea>
         <button className='comment-button' data-cy="submit-comment">Submit</button>
       </form>
 
       
-    </>
+    </div>
   )
 }
 
