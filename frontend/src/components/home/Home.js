@@ -36,7 +36,7 @@ const Home = ({ navigate }) => {
       <div className='homepage'>
         <div id='background-music' />
         <div className='titles'>
-          <h1>Welcome to The Shire!</h1>
+          <h1 className='welcome '>Welcome to The Shire!</h1>
         </div>
 
         <div className='buttons'>
@@ -46,7 +46,7 @@ const Home = ({ navigate }) => {
           <button className='homeInputButton' onClick={signUpNav}>
             Sign-Up
           </button>
-          <button className='inputButton' onClick={handleButtonClick}>
+          <button className='homeInputButton' onClick={handleButtonClick}>
             Ambience button
           </button>
         </div>

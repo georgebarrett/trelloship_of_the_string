@@ -53,9 +53,9 @@ const SignUpForm = ({ navigate }) => {
         <h1 className="signUpHeading"> Start your journey to Mordor.... </h1>
         <form className="signUpForm" onSubmit={handleSubmit}>
             <input className="formInput" placeholder='Name' id="name" type='text' value={ name } onChange={handleNameChange} />
-            <input className= "formInput" placeholder="Username" id="username" type="text" value={ username } onChange={ handleUsernameChange } />
-            <input className= "formInput" placeholder="Email" id="email" type='text' value={ email } onChange={handleEmailChange} />
-            <input className= "formInput" placeholder="Password" id="password" type='password' value={ password } onChange={handlePasswordChange} />
+            <input className="formInput" placeholder="Username" id="username" type="text" value={ username } onChange={ handleUsernameChange } />
+            <input className="formInput" placeholder="Email" id="email" type='text' value={ email } onChange={handleEmailChange} />
+            <input className="formInput" placeholder="Password" id="password" type='password' value={ password } onChange={handlePasswordChange} />
           <input  className= "signupInputButton" id='submit' type="submit" value="Submit" />
         </form>
       </div>

@@ -28,7 +28,7 @@
     height: 100%;
 }
 
-.link {
+.logoutbutton {
     display: flex;
     justify-content: right;
     padding: 4px;
@@ -36,16 +36,17 @@
     font-size: large;
     padding-top: 6px;
     text-align: right;
-    margin: 0;
-    padding-left: 0;
     text-decoration: none;
     list-style: none;
     color: white;
+    background-color: black;
+    border: none;
+    float: right;
+    position: relative;
+    left: 500px;
 }
 
-.link:hover {
-    color: coral;
+.logoutbutton:hover {
+    color: #009933;
     transition: .4s;
 }
-
-

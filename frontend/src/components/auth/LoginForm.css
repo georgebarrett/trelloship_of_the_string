@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Bilbo+Swash+Caps&display=swap');
+
 .loginForm {
   display: flex;
   justify-content: center;
@@ -27,6 +29,8 @@
   border-radius: 10px;
   background: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(5px);
+  font-family: 'Bilbo Swash Caps', cursive;
+  font-size: 50px;
 }
 
 .loginInput {
@@ -37,6 +41,10 @@
   border: 2px solid whitesmoke;
   border-radius: 10px;
   color: black;
+}
+
+.loginInput:focus {
+  outline: none;
 }
 
 .loginButton {
