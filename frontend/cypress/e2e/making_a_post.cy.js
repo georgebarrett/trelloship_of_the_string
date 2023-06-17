@@ -4,9 +4,9 @@ describe("Posting a message", () => {
     cy.login("someone@example.com", "password")
   })
 
-  it("adds to the list of posts with valid input and displays the username", async () => {
+  it("adds to the list of posts with valid input and displays the username", () => {
     cy.get("#message").type("Test post")
-    await cy.get("#submit").click();
+    cy.get("#submit").click();
     cy.contains("Test post");
     cy.contains("username1");
   })

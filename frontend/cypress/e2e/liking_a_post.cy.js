@@ -4,11 +4,14 @@ describe("liking a post", () => {
     cy.login("someone@example.com", "password")
   })
 
-  it("increments like by one then returns to 0 after second click", async () => {
-    await cy.get("#submit-like").click();
+  it("increments like by one then returns to 0 after second click", () => {
+    cy.get("#message").type("some message")
+    cy.get("#submit").click();
+    cy.get("#submit-like").click();
+    cy.get("#submit-like").click();
     cy.contains("some message 1");
 
-    await cy.get("#submit-like").click();
+    cy.get("#submit-like").click();
     cy.contains("some message 0");
   })
 })
