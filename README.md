@@ -1,47 +1,36 @@
 # Acebook
 
-In this project, you are tasked with working on an existing application. A significant part of the challenge will be to familiarise yourself with the codebase you've inherited, as you work to **improve and extend** it.
+In this group project, we have designed and implemented a Facebook style web app by building upon an existing MERN project.
+Over two weeks we had to familiarise ourselves with the inherited codebase and then design user stories and carefully plan tickets to give us an appropriate amount of work during the limited time.
 
-## Videos
+## Pre-existing Features
 
-These videos complement the docs below.
-
-* [An overview of the app](https://youtu.be/meTABGgrO2c)
-* [The backend (api)](https://youtu.be/mFczOzWW3vo)
-* [Postman](https://youtu.be/VO_kinuJngA)
-
-## Existing Features
-
-It's already possible for a user to:
+The original code allowed a user to:
 - Sign up
 - Sign in
 - Sign out
 - View a list of posts
 
+## Further Features
+
+We have made changes to allow a user to:
+- Create a post
+- Like a post
+- Comment on a post
+- View a randomly assigned avatar image next to their posts
+
 ## Technologies
 
-Here's an overview of the technologies used to build this template application. You don't need to do a deep dive on each one right now. Instead, try to get a feeling for the big picture and then dive into the details when a specific task pushes you in that direction.
+# Implementation code
+- MongoDB
+- Express
+- React
+- Node
+- Mongoose for modelling objects in MongoDB 
 
-### **M** is for MongoDB
-[MongoDB](https://www.mongodb.com/) is a _NoSQL_ database program that stores data in collections of documents (in a format similar to JSON), rather than in tables. The application interacts with MongoDB using a tool called Mongoose.
-
-### **E** is for Express
-[Express](https://expressjs.com/) is the Javascript equivalent of Sinatra. The structure of this application will feel quite different to what you're used to but the principles are the same.
-
-### **R** is for React
-[React](https://reactjs.org/) is a hugely popular tool that is used to build engaging front ends. The basic principle is that the front end is split up into _components_, each of which _could_ include some logic, template structure (HTML) and styling (CSS).
-
-### **N** is for Node
-Java script was originally designed to run exclusively in browsers, such as Chrome. [Node](https://nodejs.org/en/) is a tool that allows you to run Javascript outside the browser and its invention made it possible to build full stack Javascript apps.
-
-We also used...
-
-- [Jest](https://jestjs.io/) for unit testing on the back end
-- [Cypress](https://www.cypress.io/) for end-to-end testing and component testing, on the front end
-- [Mongoose](https://mongoosejs.com) to model objects in MongoDB.
-- [Handlebars](https://handlebarsjs.com/) for the `home` template.
-- [ESLint](https://eslint.org) for linting.
-- [Nodemon](https://nodemon.io/) to reload the server automatically.
+# Testing
+- Cypress (front end)
+- Jest (api backend)
 
 ## Architecture
 
@@ -54,46 +43,6 @@ The React front end sends HTTP requests to the backend API and receives JSON in 
 
 For example, the React front end would send this request to retrieve the entire `Post` collection.
 
-```
-GET "/posts"
-```
-
-And the body of the response would look like this.
-
-```
-{
-    "posts": [
-        {
-            "_id": "62f8ef0e6c1ffcf74cbbb181",
-            "message": "Hello, this is my first Acebook post!",
-            "__v": 0
-        },
-        {
-            "_id": "62f8ef366c1ffcf74cbbb188",
-            "message": "Welcome to Acebook! Have an Acetime :)",
-            "__v": 0
-        },
-        {
-            "_id": "62f8f08af1cffef85a7426ae",
-            "message": "Thank you :D",
-            "__v": 0
-        }
-    ]
-}
-```
-
-Here's a diagram of the above
-<br>
-<br>
-![a diagram of the MERN stack](./diagrams/mern_stack.png)
-<br>
-<br>
-
-Once received by the React FE, the JSON in the response body is used to render a list of posts on the page.
-
-![response body mapped onto a page](./diagrams/response_parsing.png)
-
-This architectural pattern is quite popular because it allows teams to build multiple front ends, all of which use the same backend API. You could, for example, go on to build a mobile app without needing to create another backend API.
 ## Authentication
 
 Up until now, if you've implemented authentication, it will likely have been done using sessions - this is a useful point of comparison but, if you haven't implemented authentication yet, that's not going to impede you right now.
