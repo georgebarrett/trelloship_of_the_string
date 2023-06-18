@@ -21,14 +21,14 @@ We have made changes to allow a user to:
 
 ## Technologies
 
-# Implementation code
+## Implementation code
 - MongoDB
 - Express
 - React
 - Node
 - Mongoose for modelling objects in MongoDB 
 
-# Testing
+## Testing
 - Cypress (front end)
 - Jest (api backend)
 
