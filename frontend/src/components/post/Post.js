@@ -15,12 +15,6 @@ const Post = ({post}) => {
     fetchComments(token, setToken, setComments, post._id)
   }, []);
   
-  // calls the posts/add-like endpoint and updates like count
-  // const handleLike = async () => {
-  //   const response = await handleSendingNewLike(token, post, '/posts/add-like');
-  //   const responseData = await response.json();
-  //   setLikeCount(responseData.likeCount);
-  // }
 
   const handleCommentSubmit = async (event) => {
     event.preventDefault();
