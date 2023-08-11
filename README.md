@@ -50,6 +50,7 @@ npm install
 # Install and start MongoDB
 brew tap mongodb/brew
 brew install mongodb-community@5.0
+brew services start mongodb-community@5.0
 
 # Start the backend server
 cd api
