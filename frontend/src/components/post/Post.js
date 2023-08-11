@@ -16,11 +16,11 @@ const Post = ({post}) => {
   }, []);
   
   // calls the posts/add-like endpoint and updates like count
-  const handleLike = async () => {
-    const response = await handleSendingNewLike(token, post, '/posts/add-like');
-    const responseData = await response.json();
-    setLikeCount(responseData.likeCount);
-  }
+  // const handleLike = async () => {
+  //   const response = await handleSendingNewLike(token, post, '/posts/add-like');
+  //   const responseData = await response.json();
+  //   setLikeCount(responseData.likeCount);
+  // }
 
   const handleCommentSubmit = async (event) => {
     event.preventDefault();
@@ -63,7 +63,7 @@ const Post = ({post}) => {
         <div className='post-container'>
           {post.message}
           <div className='like-button-container'>
-            <LikeButton className='like-button' onLike={handleLike} /> {likeCount}
+            <LikeButton className='like-button' token={token} post={post} setLikeCount={setLikeCount} /> {likeCount}
           </div>
         </div>
       </article>
