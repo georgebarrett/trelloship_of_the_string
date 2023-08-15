@@ -15,12 +15,6 @@ const Post = ({post}) => {
     fetchComments(token, setToken, setComments, post._id)
   }, []);
   
-  // calls the posts/add-like endpoint and updates like count
-  const handleLike = async () => {
-    const response = await handleSendingNewLike(token, post, '/posts/add-like');
-    const responseData = await response.json();
-    setLikeCount(responseData.likeCount);
-  }
 
   const handleCommentSubmit = async (event) => {
     event.preventDefault();
@@ -54,14 +48,16 @@ const Post = ({post}) => {
   }
 
   return(
-    <>
-      <h2 className='user-name'>{ post.username }</h2>
-      <img alt='icons' src={getImageLink()} />
+    <div className='page'>
+      <div className='username-image'>
+        <img alt='icons' src={getImageLink()} />
+        <h2 className='user-name'>{ post.username }</h2>
+      </div>
       <article className='post' data-cy="post" key={post._id}>
         <div className='post-container'>
           {post.message}
           <div className='like-button-container'>
-            <LikeButton className='like-button' onLike={handleLike} /> {likeCount}
+            <LikeButton className='like-button' token={token} post={post} setLikeCount={setLikeCount} /> {likeCount}
           </div>
         </div>
       </article>
@@ -80,14 +76,14 @@ const Post = ({post}) => {
           value={commentMessage}
           onChange={(event) => setCommentMessage(event.target.value)}
           type="text"
-          placeholder='What do you think?'
+          placeholder='One comment to rule them all?'
           required>  
         </textarea>
         <button className='comment-button' data-cy="submit-comment">Submit</button>
       </form>
 
       
-    </>
+    </div>
   )
 }
 

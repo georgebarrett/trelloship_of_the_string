@@ -1,7 +1,6 @@
 describe("Signing in", () => {
-
   before(() => {
-    cy.signup("user@email.com", "12345678", "username1", "User Name")
+    cy.signup("someone@example.com", "password", "username1", "User Name")
   })
 
   it("with valid credentials, redirects to '/posts'", () => {
